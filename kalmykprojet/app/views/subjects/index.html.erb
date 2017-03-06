@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<h1>Subjects</h1>
 
 <table>
   <thead>
@@ -10,15 +10,19 @@
   </thead>
 
   <tbody>
-    <% if @users.blank? %>
-      <p>There are not any users currently in the system.</p>
+    <% if @subjects.blank? %>
+      <p>There are not any subjects currently in the system.</p>
       <% else %>
 
-    <ul id = "users">
-      <% @users.each do |a| %>
+    <ul id = "subjects">
+      <% @subjects.each do |a| %>
       <li><%= link_to a.name, {:action => 'show', :id => a.id} -%></li>
       <% end %>
     </ul>
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<%= link_to 'New Subject', new_subject_path %>

@@ -10,10 +10,12 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @comment = Comment.find_by(id: params[:id])
   end
 
   # GET /comments/new
   def new
+    @article = Article.find_by(id: params[:id])
     @comment = Comment.new
   end
 
@@ -24,7 +26,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.build(comment_params)
 
     respond_to do |format|
       if @comment.save
@@ -54,6 +56,8 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    @article = Article.find_by(id: params[:id])
+    @comment = @article.comments.find_by(id: params[:id])
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }

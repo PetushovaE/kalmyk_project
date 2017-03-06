@@ -12,6 +12,33 @@
 	<%= @article.subject.capitalize %>
 </p>
 
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+ 
+
+<% @article.comments.each do |comment| %>
+  <p>
+  	"<%= comment.content.capitalize%> " - by <%= comment.user.name%><br>
+   
+  </p>
+  <p><%= link_to "Add comment", new_article_comment_path(@article, @article.comments.build) %><br><br>
+
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
 
 
 <hr />
