@@ -1,3 +1,4 @@
+<hr />
 <p id="notice"><%= notice %></p>
 <p>
 <h3><%= @article.title %></h3>
@@ -41,6 +42,6 @@
 
 
 
-<hr />
+
 <%= link_to 'Edit', edit_article_path(@article) %> | <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', articles_path %>
