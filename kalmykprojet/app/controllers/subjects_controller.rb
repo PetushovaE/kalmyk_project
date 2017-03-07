@@ -24,7 +24,7 @@ class SubjectsController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @subject = Subject.new(article_params)
+    @subject = Subject.new(subject_params)
 
     respond_to do |format|
       if @subject.save
@@ -41,7 +41,7 @@ class SubjectsController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     respond_to do |format|
-      if @subject.update(article_params)
+      if @subject.update(subject_params)
         format.html { redirect_to @subject, notice: 'Subject was successfully updated.' }
         format.json { render :show, status: :ok, location: @subject }
       else
@@ -70,6 +70,6 @@ class SubjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
       # params.fetch(:article, {})
-      params.require(:subject).permit(:name)
+      params.require(:subject).permit(:name, :article)
     end
 end
