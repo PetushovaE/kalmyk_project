@@ -16,7 +16,6 @@
 
     <ul id = "articles">
       <% @articles.each do |a| %>
-      <%= will_paginate @articles %>
       <li><%= link_to a.title, {:action => 'show', :id => a.id} -%></li>
       <% end %>
     </ul>
