@@ -26,7 +26,10 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = current_user.comments.build(comment_params)
+    @article = Article.find(params[:article_id])
+    # @comment = current_user.comments.build(comment_params)
+    @comment = @article.comments.create(comment_params)
+    # redirect_to article_path(@article)
 
     respond_to do |format|
       if @comment.save
