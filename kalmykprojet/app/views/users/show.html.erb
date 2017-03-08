@@ -1,19 +1,15 @@
 <p id="notice"><%= notice %></p>
-
 <p>
+
+	<%= image_tag("images.png", width: 60) if !@user.picture.present? %><br>
+
 <strong>Name:</strong>
-	<%= @user.name.capitalize %>
-</p>
+	<%= @user.name.capitalize %><br>
 
-<p>
 <strong>City:</strong>
-	<%= @user.city.capitalize %>
+	<%= @user.city %>
 </p>
 
-<p>
-<strong>Pic:</strong>
-	<%= image_tag(@user.picture_url)%>
-	<!--%= image_tag(@user.picture_url, width: 600) if @user.picture.present? %>-->
-</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
