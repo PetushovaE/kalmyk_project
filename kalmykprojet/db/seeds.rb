@@ -5,32 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(name: "example user",
-
-             email: "example@hotmail.com",
-
-             password: "foobar",
-
-             password_confirmation: "foobar",)
-
-             # admin: true )
-
-
-
-99.times do |n|
-
-    name = Faker::Name.name
-
-    email = "example-#{n+1}@aol.org"
-
-    password = "password"
-
-   User.create!(name: name,
-
-                email: email, 
-
-                password: password,
-
-                password_confirmation: password)
-
+5.times do
+    User.create!(name: Faker::Name.name,
+                city: Faker::Address.city,
+                email: Faker::Internet.email,
+                password: Faker::Internet.password(5)
+                )
 end
+
+User.create(name: 'Kat', email: 'k@gmail.com', city: 'NYC', password: 'kkkkk')
+User.create(name: 'Max', email: 'm@gmail.com', city: 'NYC', password: 'mmmmm')
+
+
+
+99.times do
+    Article.create(
+        title: Faker::Lorem.sentence,
+        body: Faker::Lorem.paragraph)
+end
+
+Comment.create(user_id: 3, article_id: 12, content: Faker::Hipster.sentence)
+Comment.create(user_id: 5, article_id: 2, content: Faker::Hipster.sentence)
+Comment.create(user_id: 2, article_id: 10, content: Faker::Hipster.sentence)

@@ -20,13 +20,13 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    @article = Article.find(params[:id])
   end
 
   # POST /articles
   # POST /articles.json
   def create
     @article = Article.new(article_params)
-
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -71,6 +71,6 @@ class ArticlesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       # params.fetch(:article, {})
-      params.require(:article).permit(:title, :body, :comment, :subject)
+      params.require(:article).permit(:title, :body, :comment)
     end
 end
