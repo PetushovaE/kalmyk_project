@@ -18,27 +18,31 @@ User.create(name: 'Max', email: 'm@gmail.com', city: 'NYC', password: 'mmmmm')
 
 
 
+
+
 99.times do
     Article.create(
         title: Faker::Lorem.sentence,
-        body: Faker::Lorem.paragraph)
+        body: Faker::Lorem.paragraph,
+        author_id: Random.rand(1..7))
 end
 
-Comment.create(user_id: 3, article_id: 1, content: Faker::Hipster.sentence)
-Comment.create(user_id: 5, article_id: 2, content: Faker::Hipster.sentence)
-Comment.create(user_id: 2, article_id: 1, content: Faker::Hipster.sentence)
-Comment.create(user_id: 4, article_id: 2, content: Faker::Hipster.sentence)
-Comment.create(user_id: 5, article_id: 2, content: Faker::Hipster.sentence)
-Comment.create(user_id: 7, article_id: 3, content: Faker::Hipster.sentence)
-Comment.create(user_id: 1, article_id: 3, content: Faker::Hipster.sentence)
-Comment.create(user_id: 9, article_id: 2, content: Faker::Hipster.sentence)
-Comment.create(user_id: 2, article_id: 4, content: Faker::Hipster.sentence)
-Comment.create(user_id: 3, article_id: 1, content: Faker::Hipster.sentence)
-Comment.create(user_id: 5, article_id: 2, content: Faker::Hipster.sentence)
-Comment.create(user_id: 8, article_id: 1, content: Faker::Hipster.sentence)
-Comment.create(user_id: 14, article_id: 2, content: Faker::Hipster.sentence)
-Comment.create(user_id: 15, article_id: 2, content: Faker::Hipster.sentence)
-Comment.create(user_id: 17, article_id: 3, content: Faker::Hipster.sentence)
-Comment.create(user_id: 11, article_id: 3, content: Faker::Hipster.sentence)
-Comment.create(user_id: 19, article_id: 2, content: Faker::Hipster.sentence)
-Comment.create(user_id: 2, article_id: 4, content: Faker::Hipster.sentence)
+
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 1, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 1, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 2, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 2, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 3, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 3, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 4, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 4, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 1, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 1, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 1, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 2, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 1, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 1, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 2, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 1, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 1, content: Faker::Hipster.sentence)
+Comment.create(commenter_id:  Random.rand(1..5), article_id: 2, content: Faker::Hipster.sentence)

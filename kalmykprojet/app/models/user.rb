@@ -1,7 +1,12 @@
 class User < ApplicationRecord
 	mount_uploader :picture, PictureUploader
-	has_many :comments
-	has_many :articles, through: :comments
+
+
+	# as author:
+	has_many :articles, :foreign_key => 'author_id'
+
+	# as commenter:
+	has_many :comments, :foreign_key => 'commenter_id'
 
 	has_secure_password
 
