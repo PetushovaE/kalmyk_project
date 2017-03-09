@@ -9,9 +9,9 @@
 </p>
 
 
-<!-- <p>
-  <%#= link_to "Load comments", article_comments_path(@article), :class => "load_comments", :remote => true %>
-</p> -->
+<p>
+  <%= link_to "Load comments", article_comments_path(@article), :class => "load_comments", :remote => true %>
+</p>
 <div class="comments">
 	<%= render 'comments/comments' %>
 </div>
