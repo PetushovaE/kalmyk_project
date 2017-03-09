@@ -1,0 +1,4 @@
+<h3><%= link_to article.title, {:action => 'show', :id => article.id} -%></h3>
+<div id="body-<%= article.id %>"><%= truncate article.body %></div>
+ 
+<button class="js-more" data-id="<%= article.id %>">More...</button>

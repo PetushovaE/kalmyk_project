@@ -17,10 +17,8 @@
     <ul id = "articles">
       <%= page_entries_info @articles %>
       <%= paginate @articles, window: 2 %>
-      <% @articles.each do |a| %>
-      <li><%= link_to a.title, {:action => 'show', :id => a.id} -%></li>
-      <div id="article-<%= a.id %>"><%= truncate(a.body) %></div>
-  <button class="js-more" data-id="<%= a.id %>">More Info</button>
+      <% @articles.each do |article| %>
+      <%= render partial: "article", locals: {article: article} %>
       <% end %>
     </ul>
     <% end %>
@@ -30,7 +28,15 @@
 <br>
 
 <script type="text/javascript" charset="utf-8">
-
+$(function () {
+  $(".js-more").on('click', function() {
+    var id = $(this).data("id");
+    $.get("/articles/" + id + "/body", function(data) {
+      // Replace text of body-id div
+      $("#body-" + id).text(data);
+    });
+  });
+});
 </script>
 
 <%= link_to 'New Article', new_article_path %>

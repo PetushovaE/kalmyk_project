@@ -64,6 +64,11 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def body
+    article = Article.find(params[:id])
+    render plain: article.body
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
