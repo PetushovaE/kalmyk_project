@@ -1,4 +1,6 @@
-$(function(){
+//Loading Comments via AJAX - Replaced by Remote True
+
+// $(function(){
 	// $("a.load_comments").on("click", function(e){
 		//Fire some ajax.
 		// $.ajax({
@@ -24,11 +26,39 @@ $(function(){
 	// 	})
 	// })
 		// load that response into the HTML of the page
-		$("a.load_comments").on("click", function(e){
-			$.ajax({
-				url: this.href,
-				dataType: 'script'
-			})
-			e.preventDefault();
-		})
-})
+// 		$("a.load_comments").on("click", function(e){
+// 			$.ajax({
+// 				url: this.href,
+// 				dataType: 'script'
+// 			})
+// 			e.preventDefault();
+// 		})
+// })
+
+
+//Submit Comments via AJAX - Soon to be replaced by remote true
+// $(function(){
+// 	$("#new_comment").on("submit", function(e){
+// 		url = this.action
+// 		console.log(url)
+// 		data = {
+// 			'authenticity_token': $("input[name='authenticity_token']").val(),
+// 			'comment': {
+// 				'content': $("#comment_content").val()
+// 			}
+// 		};
+
+//         low level
+		// $.ajax({
+		// 	type: ($("input[name='_method']").val() || this.method),
+		// 	url: this.action,
+		// 	data: $(this).serialize();,
+		// 	success: function(response){
+		// 		$("#comment_content").val("");
+		// 		var $ol = $("div.comments ol")
+		// 		$ol.append(response);
+		// 	}
+		// });
+// 		e.preventDefault();
+// 	})
+// });

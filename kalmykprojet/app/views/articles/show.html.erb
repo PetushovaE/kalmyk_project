@@ -9,12 +9,19 @@
 </p>
 
 
-<p>
-  <%= link_to "Load comments", article_comments_path(@article), :class => "load_comments", :remote => true %>
-</p>
-
+<!-- <p>
+  <%#= link_to "Load comments", article_comments_path(@article), :class => "load_comments", :remote => true %>
+</p> -->
 <div class="comments">
+	<%= render 'comments/comments' %>
 </div>
+
+<%#= form_for(@comment, :url => article_comments_path(@article)) do |f| %>
+<%= form_for([@article, @comment], :remote => true) do |f| %>
+	<%= f.text_area :content %>
+	<p><%= f.submit %></p>
+<% end %>
+
 
 
 <%= link_to 'Edit', edit_article_path(@article) %> | <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %> |
