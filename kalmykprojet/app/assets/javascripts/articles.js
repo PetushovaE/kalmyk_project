@@ -1,6 +1,6 @@
 //Loading Comments via AJAX - Replaced by Remote True
 
-// $(function(){
+$(function(){
 	// $("a.load_comments").on("click", function(e){
 		//Fire some ajax.
 		// $.ajax({
@@ -26,14 +26,14 @@
 	// 	})
 	// })
 		// load that response into the HTML of the page
-// 		$("a.load_comments").on("click", function(e){
-// 			$.ajax({
-// 				url: this.href,
-// 				dataType: 'script'
-// 			})
-// 			e.preventDefault();
-// 		})
-// })
+		$("a.load_comments").on("click", function(e){
+			$.ajax({
+				url: this.href,
+				dataType: 'script'
+			})
+			e.preventDefault();
+		})
+})
 
 
 //Submit Comments via AJAX - Soon to be replaced by remote true
@@ -59,6 +59,6 @@
 		// 		$ol.append(response);
 		// 	}
 		// });
-// 		e.preventDefault();
-// 	})
-// });
+		e.preventDefault();
+	})
+});

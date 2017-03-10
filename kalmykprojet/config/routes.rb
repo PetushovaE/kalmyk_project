@@ -14,11 +14,13 @@ Rails.application.routes.draw do
   resources :subjects
 
   resources :articles do 
-    resources :comments
+    resources :comments # Nested Resource # that expresses: /articles/:id/comments
   end
 
   get 'articles/:id/body', to: 'articles#body'
   get 'articles/:id/article_data', to: 'articles#article_data'
+
+  get '/auth/facebook/callback' => 'sessions#create'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = @article.comments
+    @comments = @article.comments #has_many associations
     # render :layout => false
     # render :json => @comments
     respond_to do |format|

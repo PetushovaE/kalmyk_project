@@ -1,10 +1,20 @@
 <p id="notice"><%= notice %></p>
-
+<head>
+  <meta charset="utf-8">
+  <!-- <link rel="stylesheet" href="/main.css"> -->
 <h1>Articles</h1>
+</head>
+<body>
+  <div class="grid-container centered">
+    <!-- <div class="grid-100"> -->
+      <div class="contained">
+        <!-- <div class="grid-100"> -->
+          <div class="heading">
+            <!-- <section class="grid-70 main"> -->
     <% if @articles.blank? %>
       <p>There are not any articles currently in the system.</p>
       <% else %>
-      <ul id="articles>"
+      <ul id="articles">
       <%= page_entries_info @articles %>
       <%= paginate @articles, window: 2 %>
       <% @articles.each do |article| %>
@@ -12,8 +22,20 @@
       <% end %>
     </ul>
     <% end %>
+  <!-- </div> -->
+</div>
+</section>
+<aside class="grid-30 list">
+  <h2>Users Status</h2>
+  <div id="usersList">
+  </div>
+</aside>
+<!-- </div> -->
+<!-- </div> -->
+</div>
 
 <br>
+
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
@@ -29,7 +51,8 @@ $(function () {
 
 </script>
 
-<!--%= link_to 'New Article', new_article_path %>
+
+</body>
      
 
 
