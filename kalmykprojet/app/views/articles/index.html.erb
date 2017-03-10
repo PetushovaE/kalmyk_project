@@ -1,20 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Articles</h1>
-
-<table>
-  <thead>
-    <tr>
-    <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% if @articles.blank? %>
       <p>There are not any articles currently in the system.</p>
       <% else %>
-
-    <ul id = "articles">
+      <ul id="articles>"
       <%= page_entries_info @articles %>
       <%= paginate @articles, window: 2 %>
       <% @articles.each do |article| %>
@@ -22,8 +12,6 @@
       <% end %>
     </ul>
     <% end %>
-  </tbody>
-</table>
 
 <br>
 
@@ -33,13 +21,23 @@ $(function () {
     var id = $(this).data("id");
     $.get("/articles/" + id + "/body", function(data) {
       // Replace text of body-id div
-      $("#body-" + id).text(data);
+      $("#body-" + id).html(data);
+    });
+  });
+});
+
+$(function () {
+  $(".js-next").on('click', function() {
+    var id = $(this).data("id");
+    $.get("/articles/" + id + "/article_data", function(data) {
+      // Replace text of body-id div
+      $("#body-" + id).html(data["body"]);
     });
   });
 });
 </script>
 
-<%= link_to 'New Article', new_article_path %>
+<!--%= link_to 'New Article', new_article_path %>
      
 
 

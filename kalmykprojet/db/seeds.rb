@@ -23,7 +23,7 @@ User.create(name: 'Max', email: 'm@gmail.com', city: 'NYC', password: 'mmmmm')
 99.times do
     Article.create(
         title: Faker::Lorem.sentence,
-        body: Faker::Lorem.paragraph,
+        body: Faker::Lorem.paragraph(30),
         author_id: Random.rand(1..7))
 end
 

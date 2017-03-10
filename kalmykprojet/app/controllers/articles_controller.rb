@@ -4,8 +4,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.order(created_at: :desc).page(params[:page])
-    # @articles = Article.paginate :page => params[:page], :per_page => 10
+    @articles = Article.order(created_at: :asc).page(params[:page])
   end
 
   # GET /articles/1
@@ -13,6 +12,12 @@ class ArticlesController < ApplicationController
   def show
     @comments = @article.comments
     @comment = Comment.new
+
+    @article = Article.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @article }
+    end
   end
 
   # GET /articles/new
@@ -67,6 +72,12 @@ class ArticlesController < ApplicationController
   def body
     article = Article.find(params[:id])
     render plain: article.body
+    # render json: ArticleSerializer.serialize(article)
+  end
+
+  def article_data
+    article = Article.find(params[:id])
+    render json: ArticleSerializer.serialize(article)
   end
 
   private
@@ -81,3 +92,4 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:title, :body, :comment)
     end
 end
+
