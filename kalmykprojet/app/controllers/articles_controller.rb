@@ -77,7 +77,7 @@ class ArticlesController < ApplicationController
 
   def article_data
     article = Article.find(params[:id])
-    render json: ArticleSerializer.serialize(article)
+    render plain: ArticleSerializer.serialize(article)
   end
 
   private
@@ -89,7 +89,7 @@ class ArticlesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       # params.fetch(:article, {})
-      params.require(:article).permit(:title, :body, :comment)
+      params.require(:article).permit(:id, :title, :body, :comment)
     end
 end
 

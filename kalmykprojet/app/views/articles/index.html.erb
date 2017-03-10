@@ -26,15 +26,7 @@ $(function () {
   });
 });
 
-$(function () {
-  $(".js-next").on('click', function() {
-    var id = $(this).data("id");
-    $.get("/articles/" + id + "/article_data", function(data) {
-      // Replace text of body-id div
-      $("#body-" + id).html(data["body"]);
-    });
-  });
-});
+
 </script>
 
 <!--%= link_to 'New Article', new_article_path %>
