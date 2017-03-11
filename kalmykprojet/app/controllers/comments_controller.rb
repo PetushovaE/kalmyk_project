@@ -8,6 +8,8 @@ class CommentsController < ApplicationController
     @comments = @article.comments #has_many associations
     # render :layout => false
     # render :json => @comments
+
+    # this is implicit request:
     respond_to do |format|
       format.html {render 'index.html', :layout => false}
       format.js {render 'index.js', :layout => false}

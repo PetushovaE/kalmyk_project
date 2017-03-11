@@ -1,0 +1,36 @@
+The ability to load the comments for a article via AJAX
+
+(you can manually trigger AJAX -Client Side logic model - Generic) 
+
+
+But for this project I used Remote True:
+Ask the server for what to do via AJAX - Server Side Ajax Model - REMOTE TRUE - Only in Rails
+
+a. Bind a generic AJAX Request for more instructions to the click event (asking the server for JS)
+b. Have the server render some JS as a response.
+c. The Browser (jQuery) will execute the JS Response.
+
+
+
+j method - action view method, to make a valid javascript
+var html = "<ol>\n <li>comment<\/li>\n ......<ol>"
+
+we set javascript variable equal some erb
+we want to render this partial
+that has all that html
+this html needs to be escaped
+
+that takes all this html as an argument
+to generate whole snippet of html by using render action view
+to render this partial
+then html passed to j method that basically escapes that html to make a valid javascript
+then we just want to append html - .html(html)
+
+rails added remote true to link ---data-remote="true"----
+<a class="load_comments" data-remote="true" href="/articles/1/comments">Load Comments</a>
+that automatically
+adds generic handler
+followed ajax request to this url that jus automatically triggers this index.js.erb
+and this view has all logic of what to do whenever someone click on this link
+
+

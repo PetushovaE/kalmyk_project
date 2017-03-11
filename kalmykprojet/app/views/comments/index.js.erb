@@ -1,3 +1,18 @@
 var html = "<%=j(render('comments/comments'))%>"
 
 $("div.comments").html(html)
+
+// j method - action view method, to make a valid javascript
+// var html = "<ol>\n <li>comment<\/li>\n ......<ol>"
+
+// we set javascript variable equal some erb
+// we want to render this partial
+// that has all that html
+// this html needs to be escaped
+
+// that takes all this html as an argument
+// to generate whole snippet of html by using render action view
+// to render this partial
+// then html passed to j method that basically escapes that html to make a valid javascript
+
+// then we just want to append html - .html(html)

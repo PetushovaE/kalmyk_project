@@ -1,6 +1,6 @@
 //Loading Comments via AJAX - Replaced by Remote True
 
-$(function(){
+// $(function(){
 	// $("a.load_comments").on("click", function(e){
 		//Fire some ajax.
 		// $.ajax({
@@ -26,14 +26,14 @@ $(function(){
 	// 	})
 	// })
 		// load that response into the HTML of the page
-		$("a.load_comments").on("click", function(e){
-			$.ajax({
-				url: this.href,
-				dataType: 'script'
-			})
-			e.preventDefault();
-		})
-})
+// 		$("a.load_comments").on("click", function(e){
+// 			$.ajax({
+// 				url: this.href,
+// 				dataType: 'script'
+// 			})
+// 			e.preventDefault();
+// 		})
+// })
 
 
 //Submit Comments via AJAX - Soon to be replaced by remote true
@@ -59,6 +59,18 @@ $(function(){
 		// 		$ol.append(response);
 		// 	}
 		// });
-		e.preventDefault();
-	})
-});
+// 		e.preventDefault();
+// 	})
+// });
+
+// notes about <%= link_to "Load Comments", article_comments_path(@article), :class => "load_comments", remote: true %>
+// so we commented out whole this file for abstract way
+// :remote => true when we say that link is remote 
+// you by definition saying 
+// when someone click on this link rails will authomatically add clickevent 
+// and followed ajax request asking for more javascript code
+// which lead to this url article_comments_path(@article)
+// which will render this index.js.erb(comments folder)
+// and so we dont need to write client side code
+
+// this called remote true patern
