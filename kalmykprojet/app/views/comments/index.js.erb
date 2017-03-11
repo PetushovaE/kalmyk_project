@@ -2,6 +2,9 @@ var html = "<%=j(render('comments/comments'))%>"
 
 $("div.comments").html(html)
 
+// notes:
+
+
 // j method - action view method, to make a valid javascript
 // var html = "<ol>\n <li>comment<\/li>\n ......<ol>"
 
@@ -16,3 +19,11 @@ $("div.comments").html(html)
 // then html passed to j method that basically escapes that html to make a valid javascript
 
 // then we just want to append html - .html(html)
+
+// rails added remote true to link ---data-remote="true"----
+// <a class="load_comments" data-remote="true" href="/articles/1/comments">Load Comments</a>
+// that automatically
+// adds generic handler
+// followed ajax request to this url that jus automatically triggers this index.js.erb
+// and this view has all logic of what to do whenever someone click on this link
+

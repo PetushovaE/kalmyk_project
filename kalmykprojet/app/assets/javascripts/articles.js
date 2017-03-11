@@ -74,3 +74,26 @@
 // and so we dont need to write client side code
 
 // this called remote true patern
+
+
+
+
+// Submit Comments via AJAX -Soon to be replaced by remote true
+// $(function(){
+// 	$("#new_comment").on("submit", function(e){
+// 		// we need the URL to submit the POST request too
+// 		// we need the form data
+// 	// low level
+// 	$.ajax({
+// 		type: "POST",
+// 		url: this.action,
+// 		data: $(this).serialize();,
+// 		success: function(response){
+// 			$("#comment_content").val("");
+// 			var $ol = $("div.comments ol")
+// 			$ol.append(response);
+// 			}
+// 		});
+// 		e.preventDefault();
+// 	})
+// })
