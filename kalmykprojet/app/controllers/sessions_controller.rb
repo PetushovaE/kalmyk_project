@@ -2,7 +2,8 @@ class SessionsController < ApplicationController
 
 	def create
     if auth
-      @user = User.find_or_create_by_omniauth(auth) 
+      @user = User.from_omniauth(auth)
+      # @user = User.find_or_create_by_omniauth(auth) 
       @user.name = auth['info']['name']
       @user.save
       session[:user_id] = @user.id

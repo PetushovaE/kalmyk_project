@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
 	has_secure_password
 
+	# devise :omniauthable, :omniauth_providers => [:facebook]
+
 	# validates :email, :presence => true
 	# validates :email, :uniqueness => true
 

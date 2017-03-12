@@ -36,6 +36,8 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = @article.comments.build(comment_params)
+    # @comment.user_id = current_user.id
+
     # respond_to do |format|
       if @comment.save
       #   format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
@@ -67,7 +69,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @article = Article.find_by(id: params[:id])
+    # @article = Article.find_by(id: params[:id])
     @comment = @article.comments.find_by(id: params[:id])
     @comment.destroy
     respond_to do |format|
