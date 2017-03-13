@@ -1,4 +1,4 @@
-<!-- $(function () {
+$(function () {
   $(".js-more").on('click', function() {
     var id = $(this).data("id");
     $.get("/articles/" + id + "/body", function(data) {
@@ -6,5 +6,4 @@
       $("#body-" + id).html(data);
     });
   });
-}); -->
-
+});

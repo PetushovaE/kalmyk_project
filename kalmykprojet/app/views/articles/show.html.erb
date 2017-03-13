@@ -1,25 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <a href="#" class="js-next" data-id="<%=@article.id%>">Next...</a>
-<h3 class="articleTitle"><%= @article.title %></h3>
+<h1 class="articleTitle"><%= @article.title %></h1>
 <p class="articleBody"><%= @article.body %></p>
-
-
-<p>
-  <%= link_to "Comments", article_comments_path(@article), :class => "comments", :remote => true %>
-</p>
-<div class="comments">
-	<%#= render 'comments/comments' %>
-</div>
-
-
-
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
   $(".js-next").on("click", function() {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    $.get("/articles/" + nextId + "/article_data", function(data) {
+    $.get("/articles/" + nextId + ".json", function(data) {
       $(".articleTitle").text(data["title"]);
       $(".articleBody").text(data["body"]);
       // re-set the id to current on the link
@@ -28,16 +17,46 @@ $(function () {
   });
 });
 </script>
+<p>
+  <%= link_to "Comments", article_comments_path(@article), :class => "comments", :remote => true %>
+</p>
+<div class="comments">
+  <%#= render 'comments/comments' %>
+</div>
 
 
-<%#= render 'comments/comments' %>
 
-<%= form_for([@article, @comment]) do |f| %>
-<%#= form_for(@comment, :url => article_comments_path(@article)) do |f| %>
-<%= f.text_area :content %>
 
-<p><%= f.submit %></p>
-<% end %>
+    <%= render partial: 'comments/form', locals: {article: @article} %>
+      <br />
+      <div id="commentResult">
+        <p id="commentBody"></p>
+      </div>
+   
+
+    <script type="text/javascript" charset="utf8">
+      $(function () {
+        $('form').submit(function(event) {
+          event.preventDefault();
+          var values = $(this).serialize();
+          var commenting = $.post('/comments', values);
+          commenting.done(function(data) {
+            var comment = data["content"];
+            $("#commentBody").append(comment);
+          });
+        });
+      });
+    </script>
+
+
+
+
+
+
+
+
+
+
 
 
 <%= link_to 'Back', articles_path %>

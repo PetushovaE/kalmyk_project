@@ -1,13 +1,7 @@
 class User < ApplicationRecord
 	mount_uploader :picture, PictureUploader
 
-
-	# as author:
-	has_many :articles, :foreign_key => 'author_id'
-
-	# as commenter:
-	has_many :comments, :foreign_key => 'commenter_id'
-
+	has_many :comments
 	has_secure_password
 
 	# devise :omniauthable, :omniauth_providers => [:facebook]

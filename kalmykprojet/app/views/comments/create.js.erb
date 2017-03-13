@@ -1,12 +1,11 @@
-$(document).on ("page:change",{
-	$("#comment_content").val("");
-		var $ol = $("div.comments ol")
-			$ol.append("<%=j(render('comments/comment', :comment => @comment)) %>");
-				$("#comment_content").focus();
-})
+// $(document).on ("page:change",{
+// 	$("#comment_content").val("");
+// 		var $ol = $("div.comments ol")
+// 			$ol.append("<%#=j(render('comments/comment', :comment => @comment)) %>");
+// 				$("#comment_content").focus();
+// })
 
 
-// to create new comment:
-// $("#comment_content").val("");
-// var $ol = $("div.comments ol")
-// $ol.append("<%#=j(render('comments/comment', :comment => @comment)) %>");
+$("#comment_content").val("");
+var $ol = $("div.comments ol")
+$ol.append("<%=j(render('comments/comment', :comment => @comment) %>");

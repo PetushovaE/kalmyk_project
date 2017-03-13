@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 <p>
 
-	<%= image_tag("images.png", width: 60) if !@user.picture.present? %><br>
+	<%= image_tag("images.png", width: 60) if !@user.picture.present? %><br><br>
 
 <strong>Name:</strong>
-	<%= @user.name.capitalize %><br>
+	<%= @user.name.capitalize %><br><br>
 
 <strong>City:</strong>
 	<%= @user.city %>
