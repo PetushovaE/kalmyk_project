@@ -21,17 +21,12 @@ $(function () {
   <%= link_to "Comments", article_comments_path(@article), :class => "comments", :remote => true %>
 </p>
 <div class="comments">
-  <%#= render 'comments/comments' %>
 </div>
 
 
+<%= render "comments/form" %>
 
 
-    <%= render partial: 'comments/form', locals: {article: @article} %>
-      <br />
-      <div id="commentResult">
-        <p id="commentBody"></p>
-      </div>
    
 
     <script type="text/javascript" charset="utf8">

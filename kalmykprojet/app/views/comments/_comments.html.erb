@@ -1,5 +1,9 @@
 <ol>
+	<% if @comments.empty? %>
+	No Comments Found
+	<% else %>
     <% @comments.each do |comment| %>
         <li><%= comment.content %></li>
+    <% end %>
     <% end %>
 </ol>

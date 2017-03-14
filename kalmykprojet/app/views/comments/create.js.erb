@@ -7,5 +7,7 @@
 
 
 $("#comment_content").val("");
-var $ol = $("div.comments ol")
-$ol.append("<%=j(render('comments/comment', :comment => @comment) %>");
+var $ol = $("div.comments ol");
+$ol.append("<%=j(render('comments/comment', :comment => @comment)) %>");
+
+$('#com').html("<%=j render @post.comments %>");

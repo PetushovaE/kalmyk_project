@@ -23,10 +23,10 @@ class CommentsController < ApplicationController
   # end
 
   # GET /comments/new
-  # def new
-  #   @article = Article.find_by(id: params[:id])
-  #   @comment = Comment.new
-  # end
+  def new
+    @article = Article.find_by(id: params[:id])
+    @comment = Comment.new
+  end
 
   # GET /comments/1/edit
   # def edit
@@ -35,17 +35,12 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = @article.comments.build(comment_params)
-    # @comment.user_id = current_user.id
-
-    # respond_to do |format|
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.build(params[:comment])
+    # @comment = Comment.create(comment_params)
+    
       if @comment.save
-      #   format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-      #   format.json { render :show, status: :created, location: @comment }
-      # else
-      #   format.html { render :new }
-      #   format.json { render json: @comment.errors, status: :unprocessable_entity }
-      # end
+      
       render 'create.js', :layout => false
     else
       render "articles/show"
@@ -86,6 +81,10 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+    end
+    def comment_data
+      @comment = Article.find(params[:id])
+      render json: comment.to_json(only: [:content, :id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

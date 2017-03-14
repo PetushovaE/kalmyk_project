@@ -9,7 +9,12 @@
 <strong>City:</strong>
 	<%= @user.city %>
 </p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+<% if logged_in? %>
+    <% else %>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+
+
+
+<%= link_to "Create a New Article", new_article_path, class: "new_article" %>
+<% end %>

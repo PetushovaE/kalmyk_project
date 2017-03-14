@@ -16,7 +16,8 @@
 
     <ul id = "users">
       <% @users.each do |a| %>
-      <li><%= link_to a.name, {:action => 'show', :id => a.id} -%></li>
+      <li><%= image_tag("images.png", width: 60)  %> 
+        <%= link_to a.name, {:action => 'show', :id => a.id} -%></li>
       <% end %>
     </ul>
     <% end %>

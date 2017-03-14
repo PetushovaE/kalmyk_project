@@ -10,8 +10,8 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @comments = @article.comments
-    @comment = Comment.new
+    # @comments = @article.comments
+    # @comment = Comment.new
 
     @article = Article.find(params[:id])
     respond_to do |format|
@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+    @article.comments.build()
   end
 
   # GET /articles/1/edit
@@ -83,13 +84,21 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params[:id])
+      article = Article.find(params[:id])
     end
+
+    # def article_data
+    #   article = Article.find(params[:id])
+    #   render json: article.to_json(only: [:title, :body, :id],
+    #                                 include: [comments: {only: [:content]}])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       # params.fetch(:article, {})
-      params.require(:article).permit(:id, :title, :body, :comment, subject_ids:[], subjects_attributes: [:name])
+      params.require(:article).permit(:id, :title, :body, :comment)
+    
+      # params.require(:article).permit(:id, :title, :body, :comment, subject_ids:[], subjects_attributes: [:name])
     end
 end
 
