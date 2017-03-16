@@ -21,13 +21,14 @@ $(function () {
   <%= link_to "Comments", article_comments_path(@article), :class => "comments", :remote => true %>
 </p>
 <div class="comments">
-  <% render 'comments/form' %>
+  
 
 </div>
 
+<div class="center-text">
+  <%= render 'comments/form' %>
+</div>
 
-
-   
 
     <script type="text/javascript" charset="utf8">
       $(function () {

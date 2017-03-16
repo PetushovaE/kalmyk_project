@@ -37,31 +37,31 @@
 
 
 //Submit Comments via AJAX - Soon to be replaced by remote true
-$(function(){
-	$("#new_comment").on("submit", function(e){
-		url = this.action
-		console.log(url)
-		data = {
-			'authenticity_token': $("input[name='authenticity_token']").val(),
-			'comment': {
-				'content': $("#comment_content").val()
-			}
-		};
+// $(function(){
+// 	$("#new_comment").on("submit", function(e){
+// 		url = this.action
+// 		console.log(url)
+// 		data = {
+// 			'authenticity_token': $("input[name='authenticity_token']").val(),
+// 			'comment': {
+// 				'content': $("#comment_content").val()
+// 			}
+// 		};
 
-        low level
-		$.ajax({
-			type: ($("input[name='_method']").val() || this.method),
-			url: this.action,
-			data: $(this).serialize();,
-			success: function(response){
-				$("#comment_content").val("");
-				var $ol = $("div.comments ol")
-				$ol.append(response);
-			}
-		});
-		e.preventDefault();
-	})
-});
+//         low level
+// 		$.ajax({
+// 			type: ($("input[name='_method']").val() || this.method),
+// 			url: this.action,
+// 			data: $(this).serialize();,
+// 			success: function(response){
+// 				$("#comment_content").val("");
+// 				var $ol = $("div.comments ol")
+// 				$ol.append(response);
+// 			}
+// 		});
+// 		e.preventDefault();
+// 	})
+// });
 
 // notes about <%= link_to "Load Comments", article_comments_path(@article), :class => "load_comments", remote: true %>
 // so we commented out whole this file for abstract way
