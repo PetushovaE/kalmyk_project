@@ -1,47 +1,32 @@
 class CommentsController < ApplicationController
   before_action :set_article
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  # before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
-  # GET /comments
-  # GET /comments.json
   def index
     @comments = @article.comments #has_many associations
-    # render :layout => false
-    # render :json => @comments
-
-    # this is implicit request:
+    
     respond_to do |format|
       format.html {render 'index.html', :layout => false}
       format.js {render 'index.js', :layout => false}
     end
   end
 
-  # GET /comments/1
-  # GET /comments/1.json
-  # def show
-  #   @comment = Comment.find_by(id: params[:id])
-  # end
+  def show
+    @comment = Comment.find_by(id: params[:id])
+  end
 
-  # GET /comments/new
   def new
-    @article = Article.find_by(id: params[:id])
+    @article = Article.find(id: params[:id])
     @comment = Comment.new
   end
 
-  # GET /comments/1/edit
-  # def edit
-  # end
-
-  # POST /comments
-  # POST /comments.json
   def create
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.build(params[:comment])
+    # @article = Article.find(params[:article_id])
+    @comment = @article.comments.build(comment_params)
     # @comment = Comment.create(comment_params)
-    
+    # @comment.user = current_user
       if @comment.save
-      
-      render 'create.js', :layout => false
+      redirect_to 'create.js', :layout => false
     else
       render "articles/show"
     end
@@ -64,7 +49,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    # @article = Article.find_by(id: params[:id])
+    @article = Article.find(params["comment"][:article_id])
     @comment = @article.comments.find_by(id: params[:id])
     @comment.destroy
     respond_to do |format|

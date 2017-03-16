@@ -1,6 +1,39 @@
 <h1>New Article</h1>
 
-<%= render 'form', article: @article %>
+<%#= render 'form', article: @article %>
 
-<%= link_to 'Back', articles_path %>
+<%#= link_to 'Back', articles_path %>
+
+<%= form_for(@article) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br />
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+  <br />
+  <%= f.submit "submit" %>
+<% end %>
+
+<div id="articleResult">
+  <h1 id="articleTitle"></h1>
+  <p id="articleBody"></p>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+      var values = $(this).serialize();
+      var posting = $.post('/articles', values);
+      
+      posting.done(function(data) {
+      	var article = data;
+      	$("#articleTitle").text(article["title"]);
+        $("#articleBody").text(article["body"]);
+      });
+    });
+  });
+</script>
+
 

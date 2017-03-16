@@ -1,11 +1,10 @@
-<%#= form_for :comment, url: '/comments' do |f| %>
 <%= form_for([@article, @article.comments.build], remote: true) do |f| %>
   <%= f.hidden_field :article_id, :value => @article.id %>
 
     <%= f.label "Add a comment:" %>
     <%= f.text_area :content %>
     <div class="actions">
-      <%= f.submit "Submit "%>
+     <p><%= f.submit "Submit "%></p>
     </div>
 
   <% end %>

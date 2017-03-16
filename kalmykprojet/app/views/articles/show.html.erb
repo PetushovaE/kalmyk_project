@@ -8,7 +8,7 @@
 $(function () {
   $(".js-next").on("click", function() {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    $.get("/articles/" + nextId + ".json", function(data) {
+    $.get("/articles/" + nextId + "/body", function(data) {
       $(".articleTitle").text(data["title"]);
       $(".articleBody").text(data["body"]);
       // re-set the id to current on the link
@@ -21,10 +21,10 @@ $(function () {
   <%= link_to "Comments", article_comments_path(@article), :class => "comments", :remote => true %>
 </p>
 <div class="comments">
+  <% render 'comments/form' %>
+
 </div>
 
-
-<%= render "comments/form" %>
 
 
    

@@ -1,10 +1,4 @@
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
-<p>
-  <strong>Comment:</strong>
-  <%= comment.content %>
-</p>
+<li><%= comment.content %></li>
+
 <%= link_to "Delete", [comment.article, comment], :confirm => 'Are you sure?', :method => :delete %>
 <hr>
