@@ -1,8 +1,6 @@
 <ol>
-	
-	
-    <% @comments.each do |comment| %>
-        <li><%= comment.content %></li>
+    <% @article.comments.each do |comment| %>
+        <%= comment.user.name %> says: <strong> <%= comment.content %></strong><br>
     <% end %>
    
 </ol>

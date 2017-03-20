@@ -6,8 +6,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
-
     @article = Article.find(params[:id])
+    @comment = Comment.new
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @article.to_json(only: [:title, :body, :id]) }
@@ -63,8 +63,8 @@ class ArticlesController < ApplicationController
   end
 
   def article_data
-    article = Article.find(params[:id])
-    render plain: ArticleSerializer.serialize(article)
+      article = Article.find(params[:id])
+      render json: article_params.to_json
   end
 
   private
@@ -73,17 +73,12 @@ class ArticlesController < ApplicationController
       article = Article.find(params[:id])
     end
 
-    def article_data
-      article = Article.find(params[:id])
-      render json: article.to_json(only: [:title, :body, :id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       # params.fetch(:article, {})
-      params.require(:article).permit(:id, :title, :body, :comment)
+      # params.require(:article).permit(:id, :title, :body, :comment)
     
-      # params.require(:article).permit(:id, :title, :body, :comment, subject_ids:[], subjects_attributes: [:name])
+      params.require(:article).permit(:id, :title, :body, subject_ids:[], subjects_attributes: [:name])
     end
 end
 

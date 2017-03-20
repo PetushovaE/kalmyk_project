@@ -1,23 +1,10 @@
 <hr />
 <p id="notice"><%= notice %></p>
 
-<p>
-	<strong>Subject Name:</strong>
-	<%= @subject.name.capitalize %>
-</p>
-
-<br>
-<h3>Articles:</h3>
-<ul>
 	<% @subject.articles.each do |article| %>
 	<p>
-		<strong>Article Name:</strong>
-	
-		<%= article.name %>
+	<%= link_to article.name, article_path(article) %>
 	</p>
 <br>
 <% end %>
-</ul>
 
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
-<%= link_to 'Back', subjects_path %>

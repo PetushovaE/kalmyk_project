@@ -1,5 +1,5 @@
-# class Subject < ApplicationRecord
+class Subject < ApplicationRecord
 	
-# 	has_many :article_subjects
-#   	has_many :articles, through: :article_subjects
-# end
+	has_many :article_subjects
+  	has_many :articles, through: :article_subjects
+end
