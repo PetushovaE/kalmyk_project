@@ -24,13 +24,14 @@ $(function () {
     var id = $(this).data("id");
     $.get("/articles/" + id + "/body", function(data) {
       // Replace text of body-id div
-      $("#body-" + id).html(data);
+      console.log(data)
+      $("#body-" + id).html(data.article.body);
     });
   });
 });
 </script>
 
-<%= link_to "Create a New Article", new_article_path, class: "new_article" %>
+<%#= link_to "Create a New Article", new_article_path, class: "new_article" %>
 
 </body>
      

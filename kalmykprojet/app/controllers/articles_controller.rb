@@ -2,12 +2,16 @@ class ArticlesController < ApplicationController
   # before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.order(created_at: :asc).page(params[:page])
+    if params[:user_id]
+      @articles = Article.find(params[:user_id]).articles
+    else
+      @articles = Article.order(created_at: :asc).page(params[:page])
+    end
   end
 
   def show
-    @article = Article.find(params[:id])
-    @comment = Comment.new
+    @article = Article.find_by(id: params[:id])
+    # @comment = Comment.new
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @article.to_json(only: [:title, :body, :id]) }
@@ -15,16 +19,17 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    @article = Article.new(user_id: current_user.id)
     @article.comments.build()
   end
 
   def edit
-    @article = Article.find(params[:id])
+    @article = Article.find_by(id: params[:id])
   end
 
   def create
     @article = Article.new(article_params)
+    @article.user = current_user
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -37,6 +42,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article = Article.find_by(id: params[:article_params])
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
@@ -58,7 +64,7 @@ class ArticlesController < ApplicationController
 
   def body
     article = Article.find(params[:id])
-    render plain: article.body
+    render json: article
     # render json: ArticleSerializer.serialize(article)
   end
 

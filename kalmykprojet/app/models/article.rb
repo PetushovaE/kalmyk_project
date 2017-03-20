@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
 
-	belongs_to :author
+	belongs_to :user
 	has_many :article_subjects
 	has_many :subjects, through: :article_subjects
 	

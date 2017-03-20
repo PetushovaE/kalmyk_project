@@ -15,18 +15,23 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
   end
 
-  def new
-    @article = Article.find(id: params[:id])
-    @comment = Comment.new
-  end
+  # def new
+  #   @article = Article.find(id: params[:id])
+  
+  # end
 
   def create
-    # @article = Article.find(params[:article_id])
-    @comment = @article.comments.build(comment_params)
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.new(comment_params)
     # @comment = Comment.create(comment_params)
-    # @comment.user = current_user
+    @comment.user = current_user
       if @comment.save
-      redirect_to 'create.js', :layout => false
+      # redirect_to 'create.js', :layout => false
+      response = {
+        comment: @comment,
+        user: @comment.user
+      }
+      render json: response
     else
       render "articles/show"
     end

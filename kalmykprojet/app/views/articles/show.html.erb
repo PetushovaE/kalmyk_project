@@ -1,19 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<a href="#" class="js-next" data-id="<%=@article.id%>">Next...</a>
+<button class="js-next" data-id="<%=@article.id%>">Next...</button>
 
 <h1 class="articleTitle"><%= @article.title %></h1>
 <p class="articleBody"><%= @article.body %></p>
+<p><% @article.subjects.each do |s| %>
+  <%= s.name %>
+  <% end %></p>
+
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
   $(".js-next").on("click", function() {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    console.log(nextId)
     $.get("/articles/" + nextId + "/body", function(data) {
-      $(".articleTitle").text(data["title"]);
-      $(".articleBody").text(data["body"]);
+      // console.log(data.article)
+      $(".articleTitle").text(data.article["title"]);
+      $(".articleBody").text(data.article["body"]);
       // re-set the id to current on the link
-      $(".js-next").attr("data-id", data["id"]);
+      $(".js-next").attr("data-id", data.article["id"]);
     });
   });
 });
@@ -36,22 +42,17 @@ $(function () {
         $('form').submit(function(event) {
           event.preventDefault();
           var values = $(this).serialize();
-          var commenting = $.post('/comments', values);
+          // POST /articles/:id/comments
+          var id = parseInt($(".js-next").attr("data-id"));
+          var commenting = $.post('/articles/'+ id +'/comments', values);
           commenting.done(function(data) {
-            var comment = data["content"];
-            $("#commentBody").append(comment);
+            console.log(data)
+            var comment = $('<span>'+data.user.name + ' says:</span> <strong>'+data.comment["content"]+'</strong></br>');
+            $("#commentContent").append(comment);
           });
         });
       });
     </script>
-
-
-
-
-
-
-
-
 
 
 

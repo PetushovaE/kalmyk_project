@@ -1,6 +1,11 @@
-<ol>
+
+<ol id="commentContent">
+	<% if @comments.empty? %>
+	No Comments Found
+	<% else %>
     <% @article.comments.each do |comment| %>
         <%= comment.user.name %> says: <strong> <%= comment.content %></strong><br>
+    <% end %>
     <% end %>
    
 </ol>

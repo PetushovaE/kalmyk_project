@@ -3,7 +3,8 @@ class CreateArticles < ActiveRecord::Migration
     create_table :articles do |t|
     	t.string :title
     	t.text :body
-    	t.integer :author_id
+    	t.integer :user_id
+    	t.integer :subject_id
 
       t.timestamps
     end

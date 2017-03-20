@@ -4,20 +4,37 @@
 
 <%#= link_to 'Back', articles_path %>
 
-<%= form_for(@article) do |f| %>
+<%= form_for @article do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <br />
+
   <%= f.label :body %>
   <%= f.text_area :body %>
   <br />
-  <%= f.submit "submit" %>
-<% end %>
+
+  <% Subject.all.each do |s| %>
+  
+  <label for="subject_id_<%= s.id%>"><%= s.name%></label>
+  <input type="checkbox" name="article[subject_ids][]" value="<%= s.id%>" id="subject_id_<%= s.id %>">
+  <%end%>
+
+  
+  <%= f.fields_for :subjects, @article.subjects.build do |s| %>
+  <%= f.label :subject %>
+  <%= s.text_field :name %>
+    <%end%>
+      <%= f.submit %>
+    <% end %>
 
 <div id="articleResult">
   <h1 id="articleTitle"></h1>
   <p id="articleBody"></p>
+  <p id="articleSubject"></p>
 </div>
+
+
+
 
 <script type="text/javascript" charset="utf-8">
   $(function () {
@@ -31,6 +48,7 @@
       	var article = data;
       	$("#articleTitle").text(article["title"]);
         $("#articleBody").text(article["body"]);
+        $("#articleSubject").text(article["subject"]);
       });
     });
   });

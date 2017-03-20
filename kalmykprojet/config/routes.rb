@@ -10,11 +10,16 @@ Rails.application.routes.draw do
 
   resources :articles
   resources :users
+  resources :authors
   resources :comments
   resources :subjects
 
   resources :articles do 
     resources :comments # Nested Resource # that expresses: /articles/:id/comments
+  end
+
+  resources :users do 
+    resources :articles # Nested Resource # that expresses: /articles/:id/comments
   end
 
   get 'articles/:id/body', to: 'articles#body'
