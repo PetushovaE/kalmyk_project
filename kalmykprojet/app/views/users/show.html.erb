@@ -1,32 +1,26 @@
 <p id="notice"><%= notice %></p>
-<p>
+<p><%= image_tag("images.png", width: 60) if !@user.picture.present? %><br><br>
 
-	<%= image_tag("images.png", width: 60) if !@user.picture.present? %><br><br>
+	<h4>Name:
+		<strong><%= @user.name.capitalize %></strong><br><br>
+	</h4>
 
-<h4><strong>Name:</strong>
-	<%= @user.name.capitalize %><br><br></h4>
-
-<h4><strong>City:</strong>
-	<%= @user.city %>
-</p></h4>
-
-<% if logged_in? %>
-
-<h4><%= "" if current_user.id == @user.id %>
-
-<%= @user.name.capitalize %> made <%= @user.comments.size%> comments.</h4><br>
-
-    
-<%= link_to 'Edit', edit_user_path(@user) %> | <%= link_to 'Back', users_path %> |
+	<h4>City:
+		<strong><%= @user.city %></strong>
+	</h4>
+</p>
+<h4><strong><%= @user.name.capitalize %></strong> made <%= @user.comments.size%> comments.<br>
+</h4>
 
 
+<% if current_user.id == @user.id %>
+	<%= link_to "Create a New Article", new_article_path, class: "new_article" %><br>
 
-
-<%= link_to "New Article", remote: true %><br>
-<%= link_to "Create a New Article", new_article_path, class: "new_article" %>
-
-
+	<%= link_to 'Edit', edit_user_path(@user) %> | <%= link_to 'Back', users_path %> 
+	<%= link_to 'Back', users_path %>
 
 <% else %>
-<%= link_to 'Back', users_path %>
+
+	<%= link_to 'Back', users_path %>
+	
 <% end %>

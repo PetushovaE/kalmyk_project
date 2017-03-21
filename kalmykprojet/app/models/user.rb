@@ -2,9 +2,8 @@ class User < ApplicationRecord
 	mount_uploader :picture, PictureUploader
 
 	has_many :comments
+	has_many :articles
 	has_secure_password
-
-	# devise :omniauthable, :omniauth_providers => [:facebook]
 
 	# validates :email, :presence => true
 	# validates :email, :uniqueness => true
