@@ -2,7 +2,7 @@
 
 <h2>Comments</h2>
     <% if @comments.blank? %>
-    <p>There are not any comments currently.</p>
+    <p>There are no comments currently.</p>
     <% else %>
     <ol>
     <% @comments.each do |comment| %>
@@ -10,6 +10,6 @@
     <% end %>
     </ol>
     <br>
-    < end >
+    <% end %>
 
 <%= link_to 'New Comment', new_article_comment_path(@article, @article.comments.build) %>

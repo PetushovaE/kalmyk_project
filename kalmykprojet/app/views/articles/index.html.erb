@@ -2,9 +2,9 @@
 
   <meta charset="utf-8">
   <!-- <link rel="stylesheet" href="/main.css"> -->
-<h1>Articles</h1>
+  <h1>Articles</h1>
 
-<body>
+  <body>
     <% if @articles.blank? %>
     <p>There are not any articles currently in the system.</p>
     <% else %>
@@ -18,22 +18,20 @@
     <% end %><br>
 
 
-<script type="text/javascript" charset="utf-8">
-$(function () {
-  $(".js-more").on('click', function() {
-    var id = $(this).data("id");
-    $.get("/articles/" + id + "/body", function(data) {
-      // Replace text of body-id div
-      console.log(data)
-      $("#body-" + id).html(data.article.body);
+  <script type="text/javascript" charset="utf-8">
+  $(function () {
+    $(".js-more").on('click', function() {
+      var id = $(this).data("id");
+      $.get("/articles/" + id + "/body", function(data) {
+        // Replace text of body-id div
+        console.log(data)
+        $("#body-" + id).html(data.article.body);
+      });
     });
   });
-});
-</script>
+  </script>
 
-<%#= link_to "Create a New Article", new_article_path, class: "new_article" %>
-
-</body>
+  </body>
      
 
 

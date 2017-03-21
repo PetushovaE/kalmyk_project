@@ -4,7 +4,7 @@
 	No Comments Found
 	<% else %>
     <% @article.comments.each do |comment| %>
-        <%= comment.user.name %> says: <strong> <%= comment.content %></strong><br>
+        <strong> <%= comment.content %></strong> by <%= comment.user.name %><br>
     <% end %>
     <% end %>
    
