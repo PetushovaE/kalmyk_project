@@ -8,6 +8,11 @@
   <%= s.name %>
   <% end %></p>
 
+    <div id="js-vote"></div>
+    <button class="js-vote" id="<%= current_user.id%>-<%= @article.id %>">Vote</button>
+
+
+
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
@@ -33,6 +38,7 @@ $(function () {
 </div>
 
 
+
 <div class="center-text">
   <%= render 'comments/form' %>
 </div>
@@ -53,9 +59,25 @@ $(function () {
           });
         });
       });
+   
+
+    
+
+      $(".js-vote").on("click", function(){
+
+        var current_user = this.id.split("-")[0];
+        var article_id = this.id.split("-")[1];
+        var totalVote = [];
+        var counter = 0;
+
+        counter++;
+        $(".js-vote").text("Voted");
+
+        return totalVote += counter;
+      })
+
+
     </script>
-
-
 
 
 <%= link_to 'Back', articles_path %>
