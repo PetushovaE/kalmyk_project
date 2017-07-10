@@ -13,9 +13,15 @@ Rails.application.routes.draw do
   resources :authors
   resources :comments
   resources :subjects
+  resources :votes
+
 
   resources :articles do 
     resources :comments # Nested Resource # that expresses: /articles/:id/comments
+  end
+
+  resources :articles do 
+    resources :votes # Nested Resource # that expresses: /articles/:id/votes
   end
 
   resources :users do 
@@ -23,6 +29,7 @@ Rails.application.routes.draw do
   end
 
   get 'articles/:id/body', to: 'articles#body'
+  # get 'articles/:id/vote', to: 'articles#vote'
   get 'articles/:id/article_data', to: 'articles#article_data'
 
   get '/auth/facebook/callback' => 'sessions#create'

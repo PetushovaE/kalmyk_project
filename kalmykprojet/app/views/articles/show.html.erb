@@ -32,6 +32,7 @@ $(function () {
 
 </div>
 
+
 <div class="center-text">
   <%= render 'comments/form' %>
 </div>
@@ -47,7 +48,7 @@ $(function () {
           var commenting = $.post('/articles/'+ id +'/comments', values);
           commenting.done(function(data) {
             console.log(data)
-            var comment = $('<span>'+data.user.name + ' says:</span> <strong>'+data.comment["content"]+'</strong></br>');
+            var comment = $('<span><strong>'+ data.comment["content"] + ' </span></strong> by '+data.user.name +'</br>');
             $("#commentContent").append(comment);
           });
         });
